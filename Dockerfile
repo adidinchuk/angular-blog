@@ -21,4 +21,4 @@ RUN npm install -g @angular/cli@7.3.9 --unsafe
 COPY . /app
 
 # start app
-CMD ng serve --host www.didinchuk.com --proxy-config proxy.config.json
+CMD ng serve --host 0.0.0.0 --proxy-config proxy.config.json
