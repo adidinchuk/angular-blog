@@ -144,7 +144,8 @@ export class CanvasComponent implements AfterViewInit {
     this.cx.beginPath();
 
     if (prevPos) {
-      this.cx.moveTo(prevPos.x, prevPos.y); // from
+      this.cx.lineWidth = 10;
+      this.cx.moveTo(prevPos.x, prevPos.y);
       this.cx.lineTo(currentPos.x, currentPos.y);
       this.cx.stroke();
     }
