@@ -72,8 +72,11 @@ export class CanvasComponent implements AfterViewInit {
     if (sd != 0) {
       var data = img.data
       for (var i = 0; i < data.length; i++) {
-        if ((i + 1) % 4 == 0)
-          data[i] = Math.min(data[i] + this.gaussianRand(sd) * 255, 255);
+        var rnd = Math.min(data[i] + this.gaussianRand(sd) * 255, 255);
+        if ((i + 1) % 4 == 0) {
+          data[i] = rnd;
+        }
+
       }
     }
     return img
@@ -144,7 +147,7 @@ export class CanvasComponent implements AfterViewInit {
     this.cx.beginPath();
 
     if (prevPos) {
-      this.cx.lineWidth = 10;
+      this.cx.lineWidth = 7;
       this.cx.moveTo(prevPos.x, prevPos.y);
       this.cx.lineTo(currentPos.x, currentPos.y);
       this.cx.stroke();
@@ -153,7 +156,7 @@ export class CanvasComponent implements AfterViewInit {
 
   public gaussianRand(sd) {
     var rand = 0;
-    var a = 2
+    var a = 10
 
     for (var i = 0; i < sd; i += 1) {
       rand += Math.random();

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CanvasComponent } from '../canvas/canvas.component';
 import { PredictionComponent } from '../prediction/prediction.component';
 import { DigitsApiService } from '../../../services/digits/api/digits-api.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class DigitControlComponent implements OnInit {
   @Input() filtered_canvas: CanvasComponent;
   @Input() scaler_canvas: CanvasComponent;
   @Input() prediction: PredictionComponent;
-  noise = .5
+  noise = .005
 
 
   constructor(private api: DigitsApiService) { }
@@ -32,7 +33,6 @@ export class DigitControlComponent implements OnInit {
   public processDigit() {
     this.prediction.digit = -1
     this.noise_canvas.updateImg(this.input_canvas.getImg(this.noise));
-    //this.filtered_canvas.updateImg(this.input_canvas.getImg());
     this.scaler_canvas.drawImage(this.noise_canvas.getImgRaw());
     this.api.runAutoencoder(this.scaler_canvas.getImgFlat(true)).subscribe(
       (res) => {
