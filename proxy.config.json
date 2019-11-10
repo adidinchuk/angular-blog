@@ -1,6 +1,6 @@
 {
     "/v1/*": {
-        "target": "http://www.didinchuk.com:8501",
+        "target": "http://www.theappliedarchitect.com:8501",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
